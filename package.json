@@ -4,7 +4,10 @@
     "main": "index.js",
     "scripts": {
         "test": "jest",
-        "start": "ts-node src/server.ts"
+        "test:watch": "jest --watch",
+        "test:coverage": "jest --coverage",
+        "start": "ts-node src/server.ts",
+        "build": "tsc"
     },
     "keywords": [],
     "author": "",
@@ -15,24 +18,22 @@
     },
     "devDependencies": {
         "@types/express": "^5.0.2",
-        "@types/node": "^22.15.24",
-        "ts-node": "^10.9.2",
-        "typescript": "^5.8.3",
+        "@types/jest": "^29.5.14",
+        "@types/node": "^22.19.7",
         "jest": "^30.0.0",
         "ts-jest": "^29.2.5",
-        "@types/jest": "^29.5.14"
+        "ts-node": "^10.9.2",
+        "typescript": "^5.9.3"
     },
-    "jest": {
-        "preset": "ts-jest",
-        "testEnvironment": "node",
-        "roots": [
-            "<rootDir>/test"
-        ],
-        "testMatch": [
-            "**/*.test.ts"
-        ],
-        "transform": {
-            "^.+\\.ts$": "ts-jest"
-        }
-    }
+    "directories": {
+        "test": "test"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/rrc-w2025-mturzak/Test_tools.git"
+    },
+    "bugs": {
+        "url": "https://github.com/rrc-w2025-mturzak/Test_tools/issues"
+    },
+    "homepage": "https://github.com/rrc-w2025-mturzak/Test_tools#readme"
 }
