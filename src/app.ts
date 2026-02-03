@@ -5,6 +5,6 @@ const app: Express = express();
 
 app.use(express.json());
 
-app.use("/api/v1/items", eventRouter);
+app.use("/api/v1/", eventRouter);
 
 export default app;
