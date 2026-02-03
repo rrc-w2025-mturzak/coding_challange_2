@@ -1,6 +1,6 @@
 import express, { Router } from "express";
 import {
-    getAllItems,
+    getAllEvent,
     createItem,
     updateItem,
     deleteItem,
@@ -10,7 +10,7 @@ import {
 const eventRouter: Router = express.Router();
 
 eventRouter.get("/health", healthData);
-eventRouter.get("/", getAllItems);
+eventRouter.get("/events", getAllEvent);
 eventRouter.post("/", createItem);
 eventRouter.put("/:id", updateItem);
 eventRouter.delete("/:id", deleteItem);

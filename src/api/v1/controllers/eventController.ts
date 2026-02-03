@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { getAllItem, createNewItem, updateItemById, deleteItemById, HealthCheckResponse } from "../servaces/eventService";
+import { getAllEvents, createNewItem, updateItemById, deleteItemById, HealthCheckResponse } from "../servaces/eventService";
 import { HTTP_STATUS } from "../../../constants/httpConstants";
 
-export const getAllItems = (req: Request, res: Response) => {
-    let result = getAllItem();
+export const getAllEvent = (req: Request, res: Response) => {
+    let result = getAllEvents();
     res.status(HTTP_STATUS.OK)
     res.json(result);
 };
