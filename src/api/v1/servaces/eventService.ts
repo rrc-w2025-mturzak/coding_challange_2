@@ -4,14 +4,21 @@ export const getAllEvents = () => {
         events: events
     }
 };
-export const createNewItem = (name: string, price: number): string => {
-    return `Create a new item. The name is ${name} and a price of ${price}`;
+
+export const getOneEvent = (id: number) => {
+    return events.find(event => event.id === id);
 };
-export const updateItemById = (name: string, price: number): string => {
-    return `Update item. The name is ${name} and a price of ${price}`;
+
+export const createNewEvent = (id: number, name: string, date: string, capacity: number, registrationCount: number): string => {
+    return `Created a new Event. The Id is ${id}, Name of the event: ${name}, Date: ${date}, Max capacity ${capacity}, Registration count ${registrationCount}`;
 };
-export const deleteItemById = (id: number): string => {
-    return `Deleted item: ${id}`;
+
+export const updateEventById = (id: number, name: string, date: string, capacity: number, registrationCount: number): string => {
+    return `Updated an Event. The Id is ${id}, Name of the event: ${name}, Date: ${date}, Max capacity ${capacity}, Registration count ${registrationCount}`;
+};
+
+export const deleteEventById = (id: number): string => {
+    return `Deleted Event: ${id}`;
 };
 
 export interface Event {
@@ -35,7 +42,7 @@ export interface HealthCheckResponse {
     version: string;
 }
 
-let events: Event[] = [
+ export const events: Event[] = [
     { 
         id: 1, 
         name: "Tech Conference 2025", 
@@ -72,46 +79,36 @@ let attendee: Attendee[] = [
     }
 ];
 
-// export function calculatePortfolioPerformance(event: Event): any {
-//     let initialInvestment = event.initialInvestment;
-//     let currentValue = event.currentValue;
+export function calculatePopularity(event: Event): any {
+    let registrationCount = event.registrationCount;
+    let capacity = event.capacity;
+    let popularityTier;
 
-//     const profitOrLoss = currentValue - initialInvestment;
-//     const percentageChange = (profitOrLoss / initialInvestment) * 100;
+    const spotsRemaining = capacity - registrationCount
 
-//     let performanceSummary;
-//     switch (true) {
-//         case percentageChange >= 30:
-//             performanceSummary = "Excellent Performance! Your investments are doing great."
-//             break
+    const popularityScore = (registrationCount / capacity) * 100
 
-//         case percentageChange >= 10:
-//             performanceSummary = "Solid gain. Keep monitoring your investments."
-//             break
+    switch (true) {
+        case popularityScore >= 90:
+            popularityTier = "Hot."
+            break
+        case popularityScore >= 70:
+            popularityTier = "Popular."
+            break
+        case popularityScore >= 50:
+            popularityTier = "Moderate."
+            break
+        case popularityScore >= 25:
+            popularityTier = "Building."
+            break
+        case popularityScore < 25:
+            popularityTier = "New."
+            break
+    }
 
-//         case percentageChange > 0:
-//             performanceSummary = "Modest gain. Your portfolio is growing slowly."
-//             break
-
-//         case percentageChange == 0:
-//             performanceSummary = "No Change. Your portfolio is holding steady."
-//             break
-
-//         case percentageChange < 0 && percentageChange >= -10:
-//             performanceSummary = "Minor loss. Stay calm and review your options."
-//             break
-
-//         case percentageChange < -10:
-//             performanceSummary = "Signifigant loss. Review your portfolio strategy."
-//             break
-
-//     }
-
-//     return {
-//         initialInvestment,
-//         currentValue,
-//         profitOrLoss,
-//         percentageChange,
-//         performanceSummary,
-//     };
-// }
+    return {
+        spotsRemaining,
+        popularityTier,
+        popularityScore
+    };
+}
