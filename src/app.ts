@@ -1,10 +1,10 @@
 import express, {Express} from "express";
+import eventRouter from "./api/v1/routes/eventRoutes";
 
 const app: Express = express();
 
-app.get("/", (req, res) => {
-    res.statusCode = 500;
-    res.send("Hello, World");
-});
+app.use(express.json());
+
+app.use("/api/v1/", eventRouter);
 
 export default app;
