@@ -38,13 +38,6 @@ export const getEventById = (req: Request, res: Response): void => {
     }
 };
 
-// export const rateEventById = (req: Request, res: Response) => {
-//     const id = Number(req.params.id);
-//     const event = events.find(e => e.id === id); 
-//     const result = calculatePopularity(event);
-//     res.status(HTTP_STATUS.OK).json(result);
-// };
-
 export const rateEventById = (req: Request, res: Response): void => {
     const id = Number(req.params.id);
 

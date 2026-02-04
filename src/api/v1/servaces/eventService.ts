@@ -80,6 +80,9 @@ let attendee: Attendee[] = [
 ];
 
 export function calculatePopularity(event: Event): any {
+    let id = event.id;
+    let name = event.name
+    let date = event.date
     let registrationCount = event.registrationCount;
     let capacity = event.capacity;
     let popularityTier;
@@ -107,8 +110,13 @@ export function calculatePopularity(event: Event): any {
     }
 
     return {
+        id,
+        name,
+        date,
+        capacity,
+        registrationCount,
         spotsRemaining,
-        popularityTier,
-        popularityScore
+        popularityScore,
+        popularityTier
     };
 }
